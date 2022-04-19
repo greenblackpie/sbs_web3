@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <style>
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background-color: coral;
+        }
+
+        #animate {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: black;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // button 태그를 선택
+            const btn = document.querySelector('button')
+            // button 요소에 이벤트 연결
+            btn.addEventListener('click', move)
+        })
+
+        // 공 움직이기 애니메이션
+        function move() {
+            /* TODO - 여기에 작성o_O */
+
+        }
+    </script>
+</head>
+<body>
+    <p><button>클릭!</button></p>
+
+    <div id="container">
+        <!-- 공 -->
+        <div id="animate"></div>
+    </div>
+</body>
+</html>
