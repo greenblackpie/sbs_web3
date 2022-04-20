@@ -20,8 +20,11 @@
                 // : option 요소를 리스트로 가져온다.
                 // event.currentTarget.options.selectedIndex
                 // : 선택된 option 의 순서번호
+                const options = event.currentTarget.options         //['만두','피자', '닭갈비', '굶음']
+                const index = event.currentTarget.options.selectedIndex
 
                 /* TODO - 여기에 작성o_O */
+                p.textContent = `선택 : ${options[index].textContent}`
                 
             })
         })

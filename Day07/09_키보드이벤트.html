@@ -12,14 +12,26 @@
             // event.KeyCode : 키보드의 키와 매핑되어 있는 순서번호
             const print = (event) => {
                 /* TODO - 여기에 작성o_O */
-
+                let output = ''
+                output += `alt : ${event.altkey}<br>`
+                output += `ctrl : ${event.ctrlkey}<br>`
+                output += `shift : ${event.shiftkey}<br>`
+                output += `KeyCode : ${event.keyCode}<br>`
+                h1.innerHTML = output
 
                 // ctrl + C
                 /* TODO - 여기에 작성o_O */
+                if( event.ctrlkey && event.keyCode == 67){
+                    alert('이 페이지에서는 복사할 수 없습니다.')
+                }
 
 
                 // ctrl + space
                 /* TODO - 여기에 작성o_O */
+                if( event.ctrlkey && event.keyCode == 32 ){
+                    // 네이버로 이동
+                    location.href = 'https://www.naver.com'
+                }
 
             }
 
@@ -27,6 +39,8 @@
             // keydown  : 키가 눌릴 때 이벤트
             // keyup    : 키를 눌렀다 뗄 때 이벤트
             /* TODO - 여기에 작성o_O */
+            document.addEventListener('keydown', print)
+            document.addEventListener('keyup', print)
             
         })
 

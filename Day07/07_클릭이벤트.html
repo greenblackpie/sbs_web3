@@ -15,6 +15,10 @@
 
             // 클릭 이벤트 등록
             /* TODO - 여기에 작성o_O */
+            btn.addEventListener('click', (event) =>{
+                count++     //클릭할 때마다 횟수 1씩 증가
+                h1.textContent = `클릭 횟수 : ${count}`
+            })
 
             /* jQuery 코드와 비교
             $('button').on('click', (event) => {

@@ -14,6 +14,20 @@
 
             // 이벤트 처리
             /* TODO - 여기에 작성o_O */
+            textarea.addEventListener('keyup', (event)=>{
+                //글자 수
+                const length = textarea.value.length
+                h2.textContent = `글자 수 : ${length}`
+
+                //event : 이벤트 관련 정보
+                //keycode : 13 (엔터) - 엔터 입력
+                if(event.keyCode == '13'){
+                    const text = textarea.value
+                    ul.innerHTML = `<li>${text}</li>`
+                    textarea.value = ''
+                }
+
+            })
             
         })
 
