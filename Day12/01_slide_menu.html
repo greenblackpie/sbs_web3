@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>풀 드롭다운 메뉴</title>
     <!-- css -->
-    <link rel="stylesheet" href="css/02_full_dropdown.css">
+    <link rel="stylesheet" href="css/01_slide_menu.css">
 
     
     <!-- js -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/02_full_dropdown.js"></script>
+    <script src="js/01_slide_menu.js"></script>
 
 </head>
 <body>
     <div class="wrap">
         <header>
-            <a href="#"><img src="img/logo.png" alt=""></a>
+            <a href="#" class="logo"><img src="img/logo.png" alt=""></a>
 
             <nav>
                 <ul>
@@ -41,7 +41,21 @@
                 </ul>
             </nav>
 
+            <!-- 햄버거 메뉴 -->
+            <div class="slide-open">
+                <span class="top"></span>
+                <span class="mid"></span>
+                <span class="bottom"></span>
+            </div>
         </header>
+
+        <div class="slide">
+            <span class="cancle"></span>
+
+        </div>
+
+        
+        <span class="bg"></span>
     </div>
 </body>
 </html>

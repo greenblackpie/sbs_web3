@@ -1,0 +1,129 @@
+
+*{ margin: 0; padding: 0; box-sizing: border-box;}
+li{ list-style-type: none;}
+a{text-decoration: none; color: black;}
+
+.wrap {width: 100%; height: 800px;}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 80px;
+    background-color: cornflowerblue;
+    position: relative;
+}
+
+nav{width: 800px;}
+nav > ul {display: flex;}
+nav > ul > li {
+    padding: 20px;
+    width: 160px;
+    height: 80px;
+    line-height: 40px;
+    text-align: center;
+    background-color: cornflowerblue;
+    cursor: pointer;
+}
+
+nav > ul > li a {color: white;}
+
+
+.logo img {height: 100%;}
+
+
+.submenu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    height: 0;
+    background-color: #eee;
+    transition:  all 0.4s;
+    z-index: -1;
+}
+
+/* 서브메뉴 활성화 */
+.submenu.active{
+    height: 400px;
+    z-index: 10;
+}
+
+header.active .submenu {
+    height: 400px;
+}
+
+.mainmenu:nth-of-type(1) .submenu {background-color: royalblue;}
+.mainmenu:nth-of-type(2) .submenu {background-color: pink;}
+.mainmenu:nth-of-type(3) .submenu {background-color: lightgreen;}
+.maiznmenu:nth-of-type(4) .submenu {background-color: lightblue;}
+
+
+.slide-open{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 30px;
+    position: relative;
+    z-index: 400;
+}
+
+.top, .mid, .bottom {
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: white;
+}
+
+.top { top: 0; transition: all 1s;}
+.mid { top: 10px; }
+.bottom { top: 20px; transition: all 1s;}
+
+/* 1번 선은 아래로 10px 이동, 시계방향으로 45도 회전 */
+.slide-open.on .top {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.slide-open.on .mid {
+    width: 0;
+}
+
+.slide-open.on .bottom {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* 슬라이드 바 */
+.slide {
+    position: fixed;
+    left: -400px;
+    width: 400px;
+    height: 100%;
+    background-color: coral;
+    z-index: 200;
+}
+
+.bg {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.cancel {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(../img/cancel.png) no-repeat;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+
