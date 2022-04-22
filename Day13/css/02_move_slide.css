@@ -1,0 +1,119 @@
+
+* { margin: 0; padding: 0; }
+
+h1 { text-align: center; }
+
+.container {
+    width: 100vw;
+    overflow: hidden;
+}
+
+#slide {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 100px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+}
+
+.slide-list {
+    position: absolute;
+    /* left: 50%; */
+    left: 0;
+    padding: 0;
+    font-size: 0;
+    /* transform: translateX(-50%); */
+    /* width: 2000px; */
+}
+
+.slide-item {
+    width: 400px;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.slide-item img { width: 100%; height: 100%; }
+
+/* 이미지 밝기 조절 */
+.slide-item img.bright-10 {
+    filter: brightness(0.1);
+}
+
+.slide-item img.bright-100 {
+    animation: bright-100 2s;
+}
+
+@keyframes bright-100 {
+    0% {}
+    100% { filter: brightness(1); }
+}
+
+
+/* 화살표 버튼 */
+.btn-box {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px 20px;
+    text-indent: -9999px;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.prev {
+    justify-self: start;
+    align-self: center;
+    background: url(../img/prev.png) no-repeat left top;
+    background-size: 100% 100%;
+}
+
+.next {
+    justify-self: end;
+    align-self: center;
+    background: url(../img/next.png) no-repeat left top;
+    background-size: 100% 100%;
+}
+
+/* 페이지 네비게이션(dots) */
+.dots-box {
+    position: absolute;
+    width: 200px;
+    height: 10px;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.dot {
+    position: relative;
+    background-color: #aaa;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+
+.dot.active {
+    background-color: #fff;
+}
+
+.dot:hover {
+    background-color: aquamarine;
+}
+
