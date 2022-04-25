@@ -14,6 +14,9 @@
 
 ****************************************/ 
 
+// 자동 재생 멈춤 여부
+let pause = false
+
 // 문서 준비 이벤트
 $(function (){
 
@@ -66,11 +69,7 @@ $(function (){
     $('.dot').first().addClass('active')
 
     // 5. 페이드 인/아웃
-    // (모든 슬라이드) - 페이드 아웃
-    $('.slide-item img').addClass('bright-10')
-    /* (가운데=첫번째 슬라이드 만) - 페이드 인 */
-    $('.slide-item:nth-child(' + (initNum+1) + ') img').removeClass('bright-10')
-    $('.slide-item:nth-child(' + (initNum+1) + ') img').addClass('bright-100')
+    fade(initNum+1)
 
     // 6. 이전 버튼(←)
     $('.prev').on('click', function() {
@@ -83,17 +82,142 @@ $(function (){
         // 2) 슬라이드 전체가 오른쪽으로 이동한다.
         currentPosition += slideWidth
         list.stop().animate({ left : currentPosition}, 1000)
+
+        // 3) 페이드 인/아웃
+        fade(initNum+1)
         
+        if( currentNo == 1 ) {
+            currentNo = slideCount
+        } else {
+            currentNo--
+        }
+        
+        console.log('현재 슬라이드 번호 : ' + currentNo)
+        currentIndex = currentNo - 1
+
+        // 현재 슬라이드의 닷츠 활성화
+        dots( currentNo )
 
     })
 
     // 7. 다음 버튼(→)
+    $('.next').on('click', function() {
+
+        // 1) 맨 왼쪽 슬라이드가 맨 오른쪽으로 이동한다.
+        currentPosition += slideWidth
+        list.css( {left : currentPosition} )
+        $('.slide-item').first().appendTo(list)
+
+        // 2) 슬라이드 전체가 왼쪽으로 이동한다.
+        currentPosition -= slideWidth
+        list.stop().animate({ left : currentPosition}, 1000)
+
+        // 3) 페이드 인/아웃
+        fade(initNum+1)
+
+        if( currentNo == slideCount ) {
+            currentNo = 1
+        } else {
+            currentNo++
+        }
+        
+        console.log('현재 슬라이드 번호 : ' + currentNo)
+        currentIndex = currentNo - 1
+
+        // 현재 슬라이드의 닷츠 활성화
+        dots( currentNo )
+
+    })
 
     // 8. 페이지 네비게이션 클릭
-    // 9. 자동 재생
+    $('.dot').on('click', function() {
 
+        // 선택한 네비게이션 인덱스
+        let index = $(this).index()
+
+        // 클릭한 위치와 현재 위치와의 차이
+        // 1 -> 3   :  3 - 1 = 2  (다음)
+        // 3 -> 1   :  1 - 3 = -2 (이전)
+        let gap = index - currentIndex
+        // gap 절댓값
+        let absGap = Math.abs(gap)
+
+        // (이전)
+        if( gap < 0 ) {
+            currentPosition -= (slideWidth * absGap)
+            list.css( { left : currentPosition } )
+
+            for( let i = 0 ; i < absGap ; i++ ) {
+                $('.slide-item').last().prependTo(list)
+            }
+
+            currentPosition += (slideWidth*absGap)
+            list.animate({ left : currentPosition}, 1000)
+        }
+
+        // (다음)
+        if( gap > 0 ) {
+            currentPosition += (slideWidth * absGap)
+            list.css( { left : currentPosition } )
+
+            for( let i = 0 ; i < absGap ; i++ ) {
+                $('.slide-item').first().appendTo(list)
+            }
+
+            currentPosition -= (slideWidth*absGap)
+            list.animate({ left : currentPosition}, 1000)
+        }
+
+        // 이동한 위치의 인덱스로 갱신
+        currentIndex = index
+        currentNo = currentIndex + 1
+
+        // 페이드 인/아웃
+        fade(initNum+1)
+
+        // 현재 슬라이드의 닷츠 활성화
+        dots( currentNo )
+        
+    })
+
+
+    // 9. 자동 재생
+    let timer = setInterval( () => {
+        // 요소.trigger(이벤트타입)
+        // - 요소에 이벤트를 강제 발생시키는 메소드
+        if( !pause ) {
+            $('.next').trigger('click')
+        }
+    }, 5000)
+
+    // 슬라이드, 화살표, 닷츠에 마우스 올렸을 때
+    $('.slide-list, .btn-box, .dots-box').on('mouseover', function() {
+        pause = true
+    })
+
+    // 슬라이드, 화살표, 닷츠에 마우스 벗어났을 때
+    $('.slide-list, .btn-box, .dots-box').on('mouseout', function() {
+        pause = false
+    })
 
 
 
 })
 
+
+// 페이드 인/아웃
+function fade( no ) {
+    // (모든 슬라이드) - 페이드 아웃
+    $('.slide-item img').addClass('bright-10')
+    $('.slide-item img').removeClass('bright-100')
+     /* (지정한 슬라이드 만) - 페이드 인 */
+    $('.slide-item:nth-child(' + (no) + ') img').removeClass('bright-10')
+    $('.slide-item:nth-child(' + (no) + ') img').addClass('bright-100')
+}
+
+// 현재 닷츠 활성화
+function dots( no ) {
+    // 현재 슬라이드의 닷츠 활성화
+    $('.dot').removeClass('active')
+    $('.dot:nth-child(' + no + ')').addClass('active')
+}
