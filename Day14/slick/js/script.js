@@ -1,5 +1,7 @@
 $(function() {
 
+    // 슬라이드 박스
+    let slide = $ ('.slide-container')
 
     // 슬릭 슬라이드 시작!
     $('.slide-container').slick({
@@ -57,7 +59,14 @@ $(function() {
                 }
             },
     
-        ]
+        ],
+
+        // 네비게이션 닷츠
+        customPaging : function(slider, i) {
+            let no = $(slider.$slides[i]).index() 
+            let span = '<span class="nav-btn">' + (i+1) + '</span>'
+            return span
+        },
 
 
 
