@@ -2,9 +2,9 @@ $(function () {
     $('#fullpage').fullpage({
         // 2.옵션 지정
         // 섹션(슬라이드) 배경색
-        sectionsColor: ['#13fc03', '#bf5cba', '#7BAABE', 'whitesmoke', '#ccddff'],
+        sectionsColor: ['#25CCF7', '#1B9CFC', '#B33771', '#FD7272', '#D6A2E8'],
         // 스크롤 속도
-        scrollingSpeed: 400,
+        scrollingSpeed: 500,
         // 연결 링크 (메뉴)
         menu: '#menu',
         anchors: ['page1', 'page2', 'page3', 'page4', 'footer'],
@@ -53,6 +53,6 @@ $(function () {
             }
         }
 
-        
+
     })
 })

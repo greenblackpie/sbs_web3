@@ -17,10 +17,8 @@
 
 
 @keyframes slideUp {
-    0% { transform: translateY(0%); opacity: 0.3; }
+    0% { transform: translateY(60%); opacity: 0.3; }
 }
-
-
 
 .flex-container {
     width: 1200px;
@@ -30,7 +28,6 @@
     justify-content: space-between;
 }
 
-
 .flex-container .item {
     width: 260px;
     height: 300px;
@@ -38,36 +35,37 @@
     box-sizing: border-box;
 }
 
-.flex-container .item.animate__move { animation-name: slideUp;}
-.flex-container .item:nth-of-type(1).animate__move {animation-duration: 1.2s;}
-.flex-container .item:nth-of-type(2).animate__move {animation-duration: 1.6s;}
-.flex-container .item:nth-of-type(3).animate__move {animation-duration: 2.0s;}
-.flex-container .item:nth-of-type(4).animate__move {animation-duration: 2.4s;}
+/* 아이템들을 순서대로 애니메이션 적용하기 */
+.flex-container .item.animate__move { animation-name: slideUp; }
+.flex-container .item:nth-of-type(1).animate__move { animation-duration: 1.2s; }
+.flex-container .item:nth-of-type(2).animate__move { animation-duration: 1.6s; }
+.flex-container .item:nth-of-type(3).animate__move { animation-duration: 2.0s; }
+.flex-container .item:nth-of-type(4).animate__move { animation-duration: 2.4s; }
 
 
-.flex-container .item2{
+.flex-container .item2 {
     width: 500px;
     height: 400px;
     background-color: cornflowerblue;
     box-sizing: border-box;
 }
 
-.flex-container .item2.animate__slideInLeft{
+.flex-container .item2.animate__slideInLeft {
     animation: slideInLeft 1.2s;
 }
 
-.flex-container .item2.animate__slideInRight{
+.flex-container .item2.animate__slideInRight {
     animation: slideInRight 1.2s;
 }
 
-@keyframes slideInLeft{
-    0% {transform: translateX(-20%); opacity: 0.6;}
+@keyframes slideInLeft {
+    0% { transform: translateX(-20%); opacity: 0.6; }
 }
 
-@keyframes slideInRight{
-    0% {transform: translateX(20%); opacity: 0.6;}
+@keyframes slideInRight {
+    0% { transform: translateX(20%); opacity: 0.6; }
 }
 
 
-.flex-container .img {width: 100%;}
-.flex-container .img img {width: 100%;}
+.flex-container .img { width: 100%; }
+.flex-container .img img { width: 100%; }
